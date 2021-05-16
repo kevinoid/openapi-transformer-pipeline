@@ -1,51 +1,61 @@
-Project Template
-================
+OpenApiTransformerPipeline
+==========================
 
-[![Build Status](https://img.shields.io/github/workflow/status/kevinoid/node-project-template/Node.js%20CI/main.svg?style=flat&label=build)](https://github.com/kevinoid/node-project-template/actions?query=branch%3Amain)
-[![Coverage](https://img.shields.io/codecov/c/github/kevinoid/project-template.svg?style=flat)](https://codecov.io/github/kevinoid/project-template?branch=main)
-[![Dependency Status](https://img.shields.io/david/kevinoid/project-template.svg?style=flat)](https://david-dm.org/kevinoid/project-template)
-[![Supported Node Version](https://img.shields.io/node/v/@kevinoid/project-template.svg?style=flat)](https://www.npmjs.com/package/@kevinoid/project-template)
-[![Version on NPM](https://img.shields.io/npm/v/@kevinoid/project-template.svg?style=flat)](https://www.npmjs.com/package/@kevinoid/project-template)
+[![Build Status](https://img.shields.io/github/workflow/status/kevinoid/openapi-transformer-pipeline/Node.js%20CI/main.svg?style=flat&label=build)](https://github.com/kevinoid/openapi-transformer-pipeline/actions?query=branch%3Amain)
+[![Coverage](https://img.shields.io/codecov/c/github/kevinoid/openapi-transformer-pipeline.svg?style=flat)](https://codecov.io/github/kevinoid/openapi-transformer-pipeline?branch=main)
+[![Dependency Status](https://img.shields.io/david/kevinoid/openapi-transformer-pipeline.svg?style=flat)](https://david-dm.org/kevinoid/openapi-transformer-pipeline)
+[![Supported Node Version](https://img.shields.io/node/v/@kevinoid/openapi-transformer-pipeline.svg?style=flat)](https://www.npmjs.com/package/@kevinoid/openapi-transformer-pipeline)
+[![Version on NPM](https://img.shields.io/npm/v/@kevinoid/openapi-transformer-pipeline.svg?style=flat)](https://www.npmjs.com/package/@kevinoid/openapi-transformer-pipeline)
 
-A Node.js/npm project template with [codecov](https://codecov.io/),
-[coveralls](https://coveralls.io/), [ESLint](https://eslint.org/),
-[conventional-changelog](https://github.com/conventional-changelog/conventional-changelog/tree/master/packages/conventional-changelog-cli),
-[c8](https://github.com/bcoe/c8), [JSDoc](http://usejsdoc.org/), and
-[mocha](https://mochajs.org/).
+Class for traversing or transforming
+[OpenAPI](https://github.com/OAI/OpenAPI-Specification/) documents by applying
+transformers with a `transformOpenApi` method which takes an input OpenAPI
+document and returns the output document, optionally in a `Promise`.
+Transformers may be implemented using
+[`OpenApiTransformerBase`](https://github.com/kevinoid/openapi-transformer-base),
+but it is not required.
 
-It is the template that I am using for my own Node.js projects, which
-represents my current preferences.  I am not advocating for these choices nor
-this template specifically, although I am happy to discuss or explain any
-choices made herein.  It is being published both for my own convenience and
-in case it may be useful to others with similar tastes.
 
 ## Introductory Example
 
-```js
-```
+To create a transformer which removes response headers, then converts
+`patternProperties` to `additionalProperties`:
 
-## Features
+```js
+import OpenApiTransformerPipeline
+  from '@kevinoid/openapi-transformer-pipeline';
+import RemoveResponseHeadersTransformer
+  from '@kevinoid/openapi-transformers/remove-response-headers.js';
+import PatternPropertiesToAdditionalPropertiesTransformer
+  from '@kevinoid/openapi-transformers/pattern-properties-to-additional-properties.js';
+
+export default class MyTransformer extends OpenApiTransformerPipeline {
+    constructor() {
+        super([
+            new RemoveResponseHeadersTransformer(),
+            new PatternPropertiesToAdditionalPropertiesTransformer(),
+        ]);
+    }
+}
+```
 
 
 ## Installation
 
-[This package](https://www.npmjs.com/package/@kevinoid/project-template) can be
+[This package](https://www.npmjs.com/package/@kevinoid/openapi-transformer-pipeline) can be
 installed using [npm](https://www.npmjs.com/), either globally or locally, by
 running:
 
 ```sh
-npm install @kevinoid/project-template
+npm install @kevinoid/openapi-transformer-pipeline
 ```
 
-## Recipes
-
-More examples can be found in the [test
-specifications](https://kevinoid.github.io/project-template/spec).
 
 ## API Docs
 
 To use this module as a library, see the [API
-Documentation](https://kevinoid.github.io/project-template/api).
+Documentation](https://kevinoid.github.io/openapi-transformer-pipeline/api).
+
 
 ## Contributing
 
@@ -62,11 +72,8 @@ significantly differing implementations, or may not be in scope for this
 project, opening an issue before writing the code can avoid frustration and
 save a lot of time and effort.
 
+
 ## License
 
 This project is available under the terms of the [MIT License](LICENSE.txt).
 See the [summary at TLDRLegal](https://tldrlegal.com/license/mit-license).
-
-The [template](https://github.com/kevinoid/node-project-template) upon which
-this project is based is available under the terms of
-[CC0 1.0 Universal](https://creativecommons.org/publicdomain/zero/1.0/).
