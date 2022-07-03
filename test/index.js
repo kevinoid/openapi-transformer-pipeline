@@ -3,7 +3,7 @@
  * @license MIT
  */
 
-import assert from 'assert';
+import assert from 'node:assert';
 
 import OpenApiTransformerPipeline from '../index.js';
 import AsyncTransformer from '../test-lib/async-transformer.js';
