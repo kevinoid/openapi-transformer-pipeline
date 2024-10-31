@@ -4,6 +4,10 @@
  * @module openapi-transformer-pipeline
  */
 
+import { debuglog } from 'node:util';
+
+const debug = debuglog('openapi-transformer-pipeline');
+
 /** An OpenAPI Transformer object.
  *
  * May be implemented using openapi-transformer-base, but need not be.
@@ -32,6 +36,8 @@ export default class OpenApiTransformerPipeline {
     this.transformOpenApi = (openApi) => {
       let result = openApi;
       for (const transformer of transformers) {
+        debug('applying transformer %s', transformer);
+
         if (typeof result.then === 'function') {
           result = result.then((r) => transformer.transformOpenApi(r));
         } else {
