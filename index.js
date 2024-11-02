@@ -36,11 +36,13 @@ export default class OpenApiTransformerPipeline {
     this.transformOpenApi = (openApi) => {
       let result = openApi;
       for (const transformer of transformers) {
-        debug('applying transformer %s', transformer);
-
         if (typeof result.then === 'function') {
-          result = result.then((r) => transformer.transformOpenApi(r));
+          result = result.then((r) => {
+            debug('applying transformer %s', transformer);
+            return transformer.transformOpenApi(r);
+          });
         } else {
+          debug('applying transformer %s', transformer);
           result = transformer.transformOpenApi(result);
         }
       }
