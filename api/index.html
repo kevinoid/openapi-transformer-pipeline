@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Home</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Home</h1>
+
+    
+
+
+
+    
+
+
+    <h3> </h3>
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+    <section>
+        <article><h1>OpenApiTransformerPipeline</h1>
+<p><a href="https://github.com/kevinoid/openapi-transformer-pipeline/actions?query=branch%3Amain"><img src="https://img.shields.io/github/actions/workflow/status/kevinoid/openapi-transformer-pipeline/node.js.yml?branch=main&amp;style=flat&amp;label=build" alt="Build Status"></a>
+<a href="https://app.codecov.io/gh/kevinoid/openapi-transformer-pipeline/branch/main"><img src="https://img.shields.io/codecov/c/github/kevinoid/openapi-transformer-pipeline/main.svg?style=flat" alt="Coverage"></a>
+<a href="https://libraries.io/npm/@kevinoid%2Fopenapi-transformer-pipeline"><img src="https://img.shields.io/librariesio/release/npm/@kevinoid/openapi-transformer-pipeline.svg?style=flat" alt="Dependency Status"></a>
+<a href="https://www.npmjs.com/package/@kevinoid/openapi-transformer-pipeline"><img src="https://img.shields.io/node/v/@kevinoid/openapi-transformer-pipeline.svg?style=flat" alt="Supported Node Version"></a>
+<a href="https://www.npmjs.com/package/@kevinoid/openapi-transformer-pipeline"><img src="https://img.shields.io/npm/v/@kevinoid/openapi-transformer-pipeline.svg?style=flat" alt="Version on NPM"></a></p>
+<p>Class for traversing or transforming
+<a href="https://github.com/OAI/OpenAPI-Specification/">OpenAPI</a> documents by applying
+transformers with a <code>transformOpenApi</code> method which takes an input OpenAPI
+document and returns the output document, optionally in a <code>Promise</code>.
+Transformers may be implemented using
+<a href="https://github.com/kevinoid/openapi-transformer-base"><code>OpenApiTransformerBase</code></a>,
+but it is not required.</p>
+<h2>Introductory Example</h2>
+<p>To create a transformer which removes response headers, then converts
+<code>patternProperties</code> to <code>additionalProperties</code>:</p>
+<pre class="prettyprint source lang-js"><code>import OpenApiTransformerPipeline
+  from '@kevinoid/openapi-transformer-pipeline';
+import RemoveResponseHeadersTransformer
+  from '@kevinoid/openapi-transformers/remove-response-headers.js';
+import PatternPropertiesToAdditionalPropertiesTransformer
+  from '@kevinoid/openapi-transformers/pattern-properties-to-additional-properties.js';
+
+export default class MyTransformer extends OpenApiTransformerPipeline {
+    constructor() {
+        super([
+            new RemoveResponseHeadersTransformer(),
+            new PatternPropertiesToAdditionalPropertiesTransformer(),
+        ]);
+    }
+}
+</code></pre>
+<h2>Installation</h2>
+<p><a href="https://www.npmjs.com/package/@kevinoid/openapi-transformer-pipeline">This package</a> can be
+installed using <a href="https://www.npmjs.com/">npm</a>, either globally or locally, by
+running:</p>
+<pre class="prettyprint source lang-sh"><code>npm install @kevinoid/openapi-transformer-pipeline
+</code></pre>
+<h2>API Docs</h2>
+<p>To use this module as a library, see the <a href="https://kevinoid.github.io/openapi-transformer-pipeline/api">API
+Documentation</a>.</p>
+<h2>Contributing</h2>
+<p>Contributions are appreciated.  Contributors agree to abide by the <a href="https://www.contributor-covenant.org/version/1/4/code-of-conduct.html">Contributor
+Covenant Code of
+Conduct</a>.
+If this is your first time contributing to a Free and Open Source Software
+project, consider reading <a href="https://opensource.guide/how-to-contribute/">How to Contribute to Open
+Source</a>
+in the Open Source Guides.</p>
+<p>If the desired change is large, complex, backwards-incompatible, can have
+significantly differing implementations, or may not be in scope for this
+project, opening an issue before writing the code can avoid frustration and
+save a lot of time and effort.</p>
+<h2>License</h2>
+<p>This project is available under the terms of the <a href="LICENSE.txt">MIT License</a>.
+See the <a href="https://tldrlegal.com/license/mit-license">summary at TLDRLegal</a>.</p></article>
+    </section>
+
+
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-openapi-transformer-pipeline.html">openapi-transformer-pipeline</a></li></ul><h3>Classes</h3><ul><li><a href="module-openapi-transformer-pipeline.html">openapi-transformer-pipeline</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.4</a> on Fri Nov 15 2024 14:28:22 GMT-0700 (Mountain Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
