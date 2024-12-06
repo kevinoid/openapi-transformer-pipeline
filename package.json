@@ -13,7 +13,7 @@
   "author": "Kevin Locke <kevin@kevinlocke.name>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/kevinoid/openapi-transformer-pipeline.git"
+    "url": "git+https://github.com/kevinoid/openapi-transformer-pipeline.git"
   },
   "type": "module",
   "files": [
