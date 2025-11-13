@@ -1,7 +1,7 @@
 OpenApiTransformerPipeline
 ==========================
 
-[![Build Status](https://img.shields.io/github/actions/workflow/status/kevinoid/openapi-transformer-pipeline/node.js.yml?branch=main&style=flat&label=build)](https://github.com/kevinoid/openapi-transformer-pipeline/actions?query=branch%3Amain)
+[![Build Status](https://img.shields.io/github/actions/workflow/status/kevinoid/openapi-transformer-pipeline/node.js.yml?branch=main&style=flat&label=build)](https://github.com/kevinoid/openapi-transformer-pipeline/actions/workflows/node.js.yml?query=branch%3Amain)
 [![Coverage](https://img.shields.io/codecov/c/github/kevinoid/openapi-transformer-pipeline/main.svg?style=flat)](https://app.codecov.io/gh/kevinoid/openapi-transformer-pipeline/branch/main)
 [![Dependency Status](https://img.shields.io/librariesio/release/npm/@kevinoid/openapi-transformer-pipeline.svg?style=flat)](https://libraries.io/npm/@kevinoid%2Fopenapi-transformer-pipeline)
 [![Supported Node Version](https://img.shields.io/node/v/@kevinoid/openapi-transformer-pipeline.svg?style=flat)](https://www.npmjs.com/package/@kevinoid/openapi-transformer-pipeline)
