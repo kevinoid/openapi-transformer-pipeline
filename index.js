@@ -37,6 +37,7 @@ export default class OpenApiTransformerPipeline {
       let result = openApi;
       for (const transformer of transformers) {
         if (typeof result.then === 'function') {
+          // eslint-disable-next-line unicorn/prefer-await
           result = result.then((r) => {
             debug('applying transformer %s', transformer);
             return transformer.transformOpenApi(r);
