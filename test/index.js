@@ -59,10 +59,10 @@ describe('OpenApiTransformerPipeline', () => {
     assert.deepStrictEqual(result, { 'x-test': [1] });
   });
 
-  it('applies AsyncTransformer Array with Promise result', () => {
+  it('applies AsyncTransformer Array with Promise result', async () => {
     const pipeline = new OpenApiTransformerPipeline([new AsyncTransformer(1)]);
-    return pipeline.transformOpenApi({})
-      .then((result) => assert.deepStrictEqual(result, { 'x-test': [1] }));
+    const result = await pipeline.transformOpenApi({});
+    assert.deepStrictEqual(result, { 'x-test': [1] });
   });
 
   it('applies SyncTransformer Generator with non-Promise result', () => {
@@ -81,21 +81,21 @@ describe('OpenApiTransformerPipeline', () => {
     assert.deepStrictEqual(result, {});
   });
 
-  it('applies Sync after Async with Promise result', () => {
+  it('applies Sync after Async with Promise result', async () => {
     const pipeline = new OpenApiTransformerPipeline([
       new AsyncTransformer(1),
       new SyncTransformer(2),
     ]);
-    return pipeline.transformOpenApi({})
-      .then((result) => assert.deepStrictEqual(result, { 'x-test': [1, 2] }));
+    const result = await pipeline.transformOpenApi({});
+    assert.deepStrictEqual(result, { 'x-test': [1, 2] });
   });
 
-  it('applies Async after Sync with Promise result', () => {
+  it('applies Async after Sync with Promise result', async () => {
     const pipeline = new OpenApiTransformerPipeline([
       new SyncTransformer(1),
       new AsyncTransformer(2),
     ]);
-    return pipeline.transformOpenApi({})
-      .then((result) => assert.deepStrictEqual(result, { 'x-test': [1, 2] }));
+    const result = await pipeline.transformOpenApi({});
+    assert.deepStrictEqual(result, { 'x-test': [1, 2] });
   });
 });
